@@ -1,9 +1,9 @@
-function App() {
+import DateCounter from './DateCounter';
+
+export default function App() {
   return (
-    <div className='App'>
-      <h1>React quiz</h1>
+    <div>
+      <DateCounter />
     </div>
   );
 }
-
-export default App;
