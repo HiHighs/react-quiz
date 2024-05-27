@@ -48,6 +48,8 @@ function reducer(state, action) {
         highscore:
           state.points > state.highscore ? state.points : state.highscore,
       };
+    case 'restart':
+      return { ...initialState, questions: state.questions, status: 'ready' };
     default:
       console.error('Something went wrong');
   }
@@ -59,7 +61,6 @@ export default function App() {
 
   const numQuestions = questions.length;
   const maxPoints = questions.reduce((sum, q) => sum + q.points, 0);
-  console.log(maxPoints);
 
   useEffect(() => {
     fetch('http://localhost:8000/questions')
@@ -105,6 +106,7 @@ export default function App() {
             points={points}
             maxPoints={maxPoints}
             highscore={highscore}
+            dispatch={dispatch}
           />
         )}
       </Main>
